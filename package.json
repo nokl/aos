@@ -5,5 +5,15 @@
   "repository": "https://github.com/nokl/scroll-animation.git",
   "author": "nokl",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "fmt": "prettier {*,**/*}{.vue,.php,.html,.scss,.js} --write --ignore-path .gitignore"
+  },
+  "browserslist": [
+    "last 2 version",
+    "IE 11"
+  ],
+  "devDependencies": {
+    "intersection-observer": "0.7.0"
+  }
 }
