@@ -1,0 +1,9 @@
+{
+  "name": "@nokl/scroll-animation",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/nokl/scroll-animation.git",
+  "author": "nokl",
+  "license": "MIT",
+  "private": true
+}
