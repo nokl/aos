@@ -1,8 +1,8 @@
 {
-  "name": "@nokl/scroll-animation",
+  "name": "@nokl/aos",
   "version": "0.0.1",
   "main": "index.js",
-  "repository": "https://github.com/nokl/scroll-animation.git",
+  "repository": "https://github.com/nokl/aos.git",
   "author": "nokl",
   "license": "MIT",
   "private": true,
