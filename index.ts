@@ -1,56 +1,58 @@
-const defaults = {
+interface AosOptions {
     /**
      * Whether Aos should be initialised automatically when you create an instance.
      * If disabled, then you need to init it manually by calling Aos.init()
-     * @type {boolean}
      * @default true
      */
-    init: true,
+    init: boolean;
     /**
-     * @type {String} target selector
+     * target selector
+     *
      * @default '[data-aos]'
      */
-    targetSelector: '[data-aos]',
+    targetSelector: string;
     /**
-     * @type {String} add class name
+     * add class name
+     *
      * @default 'is-active'
      */
-    addClass: 'is-active',
+    addClass: string;
     /**
-     * @type {number | number[]}
      * @default [0.25]
      */
-    threshold: [0.25],
+    threshold: number | number[];
     /**
-     * @type {boolean}
      * @default false
      */
+    isOnce: boolean;
+}
+
+const defaults: AosOptions = {
+    init: true,
+    targetSelector: '[data-aos]',
+    addClass: 'is-active',
+    threshold: [0.25],
     isOnce: false,
 };
 
 export default class Aos {
-    /**
-     * @param {defaults} props
-     */
-    constructor(props) {
+    params!: AosOptions;
+    targets!: NodeListOf<HTMLElement>;
+    constructor(props: AosOptions) {
         this.params = { ...defaults, ...props };
+
         if (this.params.init) this.init();
     }
+
     init() {
-        /** @type {HTMLElement[]} */
-        this.targets = document.querySelectorAll(this.params.targetSelector);
+        this.targets = document.querySelectorAll<HTMLElement>(this.params.targetSelector);
         if (this.targets.length > 0) this.start();
     }
     start() {
-        /** @type {IntersectionObserverInit} */
-        const options = {
+        const options: IntersectionObserverInit = {
             threshold: this.params.threshold,
         };
-        /**
-         * @param {IntersectionObserverEntry[]} entries
-         * @param {IntersectionObserver} observer
-         */
-        const callback = (entries, observer) => {
+        const callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
             entries.forEach((entry) => {
                 if (entry.intersectionRatio >= this.params.threshold) {
                     entry.target.classList.add(this.params.addClass);
