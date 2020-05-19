@@ -14,6 +14,6 @@
     "IE 11"
   ],
   "devDependencies": {
-    "intersection-observer": "0.7.0"
+    "intersection-observer": "0.10.0"
   }
 }
