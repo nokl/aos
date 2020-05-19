@@ -2,9 +2,9 @@ const defaults = {
     /** @type {boolean} */
     init: true,
     /** @type {String} target selector */
-    targetSelector: '.is-scroll-show',
+    targetSelector: '[data-aos]',
     /** @type {String} add class name */
-    addClass: 'is-show',
+    addClass: 'is-active',
     /** @type {Number[]} */
     threshold: [0.25],
     /** @type {boolean} */
