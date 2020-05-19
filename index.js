@@ -16,7 +16,7 @@ export default class ScrollShowElm {
      * @param {defaults} props
      */
     constructor(props) {
-        const options = Object.assign({}, defaults, props);
+        const options = { ...defaults, ...props };
         this.init = options.init;
         this.targetSelector = options.targetSelector;
         this.addClass = options.addClass;
