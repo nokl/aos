@@ -42,7 +42,7 @@ export default class ScrollShowElm {
          * @param {IntersectionObserver} observer
          */
         const callback = (entries, observer) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.intersectionRatio >= this.threshold) {
                     entry.target.classList.add(this.addClass);
                     if (this.isOnce) observer.unobserve(entry.target);
@@ -52,7 +52,7 @@ export default class ScrollShowElm {
             });
         };
         const observer = new IntersectionObserver(callback, options);
-        this.targets.forEach(elm => {
+        this.targets.forEach((elm) => {
             observer.observe(elm);
         });
     }
