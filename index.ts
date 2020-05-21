@@ -35,7 +35,7 @@ const defaults: AosOptions = {
     isOnce: false,
 };
 
-export default class Aos {
+export class Aos {
     params!: AosOptions;
     targets!: NodeListOf<HTMLElement>;
     constructor(props: AosOptions) {

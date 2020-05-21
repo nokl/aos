@@ -28,7 +28,7 @@ const defaults = {
     isOnce: false,
 };
 
-export default class Aos {
+export class Aos {
     /**
      * @param {defaults} props
      */
