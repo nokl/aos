@@ -1,3 +1,5 @@
+type CallbackProps = { entry: IntersectionObserverEntry };
+
 interface AosOptions {
     /**
      * Whether Aos should be initialised automatically when you create an instance.
@@ -25,6 +27,10 @@ interface AosOptions {
      * @default false
      */
     isOnce: boolean;
+    /**
+     * @default null
+     */
+    callback: ({ entry }: CallbackProps) => void;
 }
 
 const defaults: AosOptions = {
@@ -33,12 +39,13 @@ const defaults: AosOptions = {
     addClass: 'is-active',
     threshold: [0.25],
     isOnce: false,
+    callback: null,
 };
 
 export class Aos {
     params!: AosOptions;
     targets!: NodeListOf<HTMLElement>;
-    constructor(props: AosOptions) {
+    constructor(props: Partial<AosOptions>) {
         this.params = { ...defaults, ...props };
 
         if (this.params.init) this.init();
@@ -57,6 +64,7 @@ export class Aos {
                 if (entry.intersectionRatio >= this.params.threshold) {
                     entry.target.classList.add(this.params.addClass);
                     if (this.params.isOnce) observer.unobserve(entry.target);
+                    if (this.params.callback) this.params.callback({ entry });
                 } else if (!entry.isIntersecting) {
                     entry.target.classList.remove(this.params.addClass);
                 }

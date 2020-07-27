@@ -26,6 +26,12 @@ const defaults = {
      * @default false
      */
     isOnce: false,
+    /**
+     * @type {function({entry: IntersectionObserverEntry})}
+     * @returns void
+     * @default null
+     */
+    callback: null,
 };
 
 export class Aos {
@@ -55,6 +61,7 @@ export class Aos {
                 if (entry.intersectionRatio >= this.params.threshold) {
                     entry.target.classList.add(this.params.addClass);
                     if (this.params.isOnce) observer.unobserve(entry.target);
+                    if (this.params.callback) this.params.callback({ entry });
                 } else if (!entry.isIntersecting) {
                     entry.target.classList.remove(this.params.addClass);
                 }
